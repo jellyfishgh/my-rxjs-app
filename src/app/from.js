@@ -1,8 +1,10 @@
 module.exports = (createObservable, observer) => {
-  createObservable('5').subscribe(observer)
-  createObservable('3', 5).subscribe(observer)
-  createObservable(3, 0).subscribe(observer)
-  createObservable(0, 3).subscribe(observer)
-  createObservable(0).subscribe(observer)
-  createObservable(-1).subscribe(observer)
+  createObservable(['hello', 2, 2, { name: 'from' }]).subscribe(observer)
+  createObservable(
+    new Promise(resolve => {
+      setTimeout(() => {
+        resolve('resolve')
+      }, 1000)
+    })
+  ).subscribe(observer)
 }

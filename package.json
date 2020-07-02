@@ -2,13 +2,17 @@
   "name": "my-rxjs-app",
   "version": "1.0.0",
   "description": "my-rxjs-app",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node src/index"
   },
   "keywords": [
     "rxjs"
   ],
   "author": "hemu",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "jsdom": "^16.2.2",
+    "rxjs": "^7.0.0-beta.0"
+  }
 }

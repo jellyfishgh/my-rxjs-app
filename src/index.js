@@ -1,7 +1,10 @@
-// https://zhuanlan.zhihu.com/p/146795979
-// https://github.com/ReactiveX/RxJS
+const { _import } = require('./util')
 
-const startApp = app => {
+let isUseRxjs = true
+isUseRxjs = false
+
+const startApp = appName => {
+  const app = require(`./app/${appName}`)
   const observerList = [
     {
       next: v => console.log('next', v),
@@ -10,10 +13,10 @@ const startApp = app => {
     },
     (...args) => console.log(...args)
   ]
-  console.log('\n---', app.name, '---\n')
-  observerList.forEach(observer => app.run(observer))
+  console.log('\n---', appName, '---\n')
+  observerList.forEach(observer => app(_import('rxjs', isUseRxjs)[appName], observer))
 }
 
-// startApp(require('./app/of'))
-// startApp(require('./app/fromEvent'))
-startApp(require('./app/range'))
+startApp('of')
+startApp('fromEvent')
+startApp('range')

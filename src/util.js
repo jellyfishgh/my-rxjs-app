@@ -1,6 +1,3 @@
-let isUseRxjs = true
-isUseRxjs = false
-
 module.exports = {
-  _import: path => require(isUseRxjs ? path : `./${path}`)
+  _import: (path, isUseRxjs) => require(isUseRxjs ? path : `./${path}`)
 }

@@ -15,8 +15,29 @@ const fromEvent = (element, eventName) =>
     })
   })
 
+const range = (start, end) =>
+  of(
+    ...(() => {
+      start = Number(start)
+      end = Number(end)
+      if (Number.isInteger(start)) {
+        if (Number.isInteger(end)) {
+          if (end > 0) {
+            return Array.from({ length: end }, (_, i) => start + i)
+          }
+          return []
+        }
+        if (start > 0) {
+          return Array.from({ length: start }, (_, i) => i)
+        }
+      }
+      return []
+    })()
+  )
+
 module.exports = {
   Observable,
   of,
-  fromEvent
+  fromEvent,
+  range
 }

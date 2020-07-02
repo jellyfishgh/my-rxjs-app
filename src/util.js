@@ -1,6 +1,6 @@
-const _import = path => require(path)
-// const _import = path => require(`./${path}`)
+let isUseRxjs = true
+isUseRxjs = false
 
 module.exports = {
-  _import
+  _import: path => require(isUseRxjs ? path : `./${path}`)
 }

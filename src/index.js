@@ -14,5 +14,6 @@ const startApp = app => {
   observerList.forEach(observer => app.run(observer))
 }
 
-startApp(require('./app/of'))
-startApp(require('./app/fromEvent'))
+// startApp(require('./app/of'))
+// startApp(require('./app/fromEvent'))
+startApp(require('./app/range'))

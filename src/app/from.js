@@ -1,8 +1,8 @@
-const { _import } = require('../util')
-
-const { of } = (module.exports = {
-  name: 'of',
-  run: observer => {
-    _import('rxjs')[this.name](1, 2, 3).subscribe(observer)
-  }
-})
+module.exports = (createObservable, observer) => {
+  createObservable('5').subscribe(observer)
+  createObservable('3', 5).subscribe(observer)
+  createObservable(3, 0).subscribe(observer)
+  createObservable(0, 3).subscribe(observer)
+  createObservable(0).subscribe(observer)
+  createObservable(-1).subscribe(observer)
+}

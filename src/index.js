@@ -17,6 +17,8 @@ const startApp = appName => {
   observerList.forEach(observer => app(_import('rxjs', isUseRxjs)[appName], observer))
 }
 
-startApp('of')
-startApp('fromEvent')
-startApp('range')
+// startApp('of')
+// startApp('fromEvent')
+// startApp('range')
+// startApp('from')
+// startApp('interval')

@@ -35,9 +35,18 @@ const range = (start, end) =>
     })()
   )
 
+const interval = delay =>
+  new Observable(observer => {
+    let start = 0
+    setInterval(() => {
+      observer.next(start++)
+    }, delay)
+  })
+
 module.exports = {
   Observable,
   of,
   fromEvent,
-  range
+  range,
+  interval
 }

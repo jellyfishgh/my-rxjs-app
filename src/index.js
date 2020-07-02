@@ -1,7 +1,7 @@
 const { _import } = require('./util')
 
 let isUseRxjs = true
-// isUseRxjs = false
+isUseRxjs = false
 
 const startApp = appName => {
   const app = require(`./app/${appName}`)
@@ -22,4 +22,4 @@ const startApp = appName => {
 // startApp('range')
 // startApp('interval')
 // startApp('timer')
-// startApp('from')
+startApp('from')

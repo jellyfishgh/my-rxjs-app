@@ -52,11 +52,31 @@ const timer = delay =>
     }, delay)
   })
 
+const from = params => {
+  if (Array.isArray(params)) {
+    return new Observable(observer => {
+      params.forEach(item => observer.next(item))
+      observer.complete()
+    })
+  }
+  return new Observable(observer => {
+    Promise.resolve(params)
+      .then(data => {
+        observer.next(data)
+        observer.complete()
+      })
+      .catch(err => {
+        observer.error(err)
+      })
+  })
+}
+
 module.exports = {
   Observable,
   of,
   fromEvent,
   range,
   interval,
-  timer
+  timer,
+  from
 }

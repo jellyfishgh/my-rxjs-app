@@ -14,6 +14,9 @@ class Observable {
     }
     return this._subscribe({ ...defaultObserver, ...observer }) || { subscribe: () => {} }
   }
+  pipe(...fnList) {
+    return fnList.reduce((x, y) => y(x), this)
+  }
 }
 
 module.exports = Observable

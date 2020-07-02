@@ -1,3 +1,6 @@
+// https://zhuanlan.zhihu.com/p/146795979
+// https://rxjs.dev/guide/subscription
+
 const { _import } = require('./util')
 
 let isUseRxjs = true
@@ -14,12 +17,12 @@ const startApp = appName => {
     (...args) => console.log(...args)
   ]
   console.log('\n---', appName, '---\n')
-  observerList.forEach(observer => app(_import('rxjs', isUseRxjs)[appName], observer))
+  observerList.forEach(observer => app(_import('rxjs', isUseRxjs)[appName], observer, isUseRxjs))
 }
 
-// startApp('of')
+startApp('of')
 // startApp('fromEvent')
 // startApp('range')
 // startApp('interval')
-startApp('timer')
+// startApp('timer')
 // startApp('from')

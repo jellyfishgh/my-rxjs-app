@@ -53,10 +53,13 @@ const interval = delay =>
 const timer = delay =>
   new Observable(observer => {
     let start = 0
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       observer.next(start)
       observer.complete()
     }, delay)
+    return {
+      unsubscribe: () => clearTimeout(timer)
+    }
   })
 
 const from = params => {

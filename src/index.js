@@ -20,6 +20,6 @@ const startApp = appName => {
 // startApp('of')
 // startApp('fromEvent')
 // startApp('range')
-startApp('interval')
-// startApp('timer')
+// startApp('interval')
+startApp('timer')
 // startApp('from')

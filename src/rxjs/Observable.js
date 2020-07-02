@@ -10,9 +10,9 @@ class Observable {
       complete: () => {}
     }
     if (typeof observer === 'function') {
-      return this._subscribe({ ...defaultObserver, next: observer })
+      observer = { next: observer }
     }
-    return this._subscribe({ ...defaultObserver, ...observer })
+    return this._subscribe({ ...defaultObserver, ...observer }) || { subscribe: () => {} }
   }
 }
 

@@ -10,9 +10,13 @@ const of = (...args) =>
 
 const fromEvent = (element, eventName) =>
   new Observable(observer => {
-    element.addEventListener(eventName, e => {
+    const handler = e => {
       observer.next(e)
-    })
+    }
+    element.addEventListener(eventName, handler)
+    return {
+      unsubscribe: () => element.removeEventListener(eventName, handler)
+    }
   })
 
 const range = (start, end) =>

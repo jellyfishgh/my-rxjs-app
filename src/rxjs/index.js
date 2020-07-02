@@ -1,16 +1,19 @@
 const Observable = require('./Observable')
 
-const of = (...args) => {
-  const observable = new Observable(observer => {
+const of = (...args) =>
+  new Observable(observer => {
     args.forEach(v => {
       observer.next(v)
     })
     observer.complete()
   })
-  return observable
-}
 
-const fromEvent = () => {}
+const fromEvent = (element, eventName) =>
+  new Observable(observer => {
+    element.addEventListener(eventName, e => {
+      observer.next(e)
+    })
+  })
 
 module.exports = {
   Observable,

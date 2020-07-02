@@ -8,11 +8,11 @@ const startApp = app => {
       error: v => console.log('error', v),
       complete: v => console.log('complete', v, '\n')
     },
-    console.log
+    (...args) => console.log(...args)
   ]
-  console.log('---', app.name, '---\n')
+  console.log('\n---', app.name, '---\n')
   observerList.forEach(observer => app.run(observer))
-  console.log('\n\n')
 }
 
 startApp(require('./app/of'))
+startApp(require('./app/fromEvent'))

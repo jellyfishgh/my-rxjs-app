@@ -2,11 +2,19 @@ const { _import } = require('../util')
 
 const { fromEvent } = _import('rxjs')
 
-import { JSDOM } from 'jsdom'
+const { JSDOM } = require('jsdom')
 
 const tag = 'div'
-const event = 'click'
+const eventName = 'click'
 
-const element = new JSDOM(`<${tag}></${tag}>`).window.document.querySelector(tag)
-
-const source = fromEvent(element, event)
+module.exports = {
+  name: 'fromEvent',
+  run: observer => {
+    const element = new JSDOM(`<${tag}></${tag}>`).window.document.querySelector(tag)
+    const source = fromEvent(element, eventName)
+    source.subscribe(observer)
+    setTimeout(() => {
+      element[eventName]()
+    }, 1000)
+  }
+}

@@ -22,3 +22,4 @@ const startApp = appName => {
 // startApp('range')
 // startApp('from')
 // startApp('interval')
+startApp('timer')

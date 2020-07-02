@@ -43,10 +43,20 @@ const interval = delay =>
     }, delay)
   })
 
+const timer = delay =>
+  new Observable(observer => {
+    let start = 0
+    setTimeout(() => {
+      observer.next(start)
+      observer.complete()
+    }, delay)
+  })
+
 module.exports = {
   Observable,
   of,
   fromEvent,
   range,
-  interval
+  interval,
+  timer
 }

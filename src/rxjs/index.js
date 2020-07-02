@@ -42,9 +42,12 @@ const range = (start, end) =>
 const interval = delay =>
   new Observable(observer => {
     let start = 0
-    setInterval(() => {
+    const inter = setInterval(() => {
       observer.next(start++)
     }, delay)
+    return {
+      unsubscribe: () => clearInterval(inter)
+    }
   })
 
 const timer = delay =>

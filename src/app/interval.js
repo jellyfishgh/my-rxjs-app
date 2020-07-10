@@ -1,4 +1,4 @@
 module.exports = (createObservable, observer) => {
-  const subject = createObservable(1000).subscribe(observer)
-  setTimeout(subject.unsubscribe, 3000)
+  const subscription = createObservable(1000).subscribe(observer)
+  setTimeout(subscription.unsubscribe, 3000)
 }

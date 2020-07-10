@@ -3,19 +3,27 @@ const Observable = require('./Observable')
 const map = fn => observable =>
   new Observable(observer => {
     observable.subscribe({
-      next: val => observer.next(fn(val)),
-      error: err => observer.error(err),
-      complete: () => observer.complete()
+      ...observer,
+      next: val => observer.next(fn(val))
     })
   })
 
 const filter = fn => observable =>
   new Observable(observer => {
     observable.subscribe({
-      next: val => (fn(val) ? observer.next(val) : () => {}),
-      error: err => observer.error(err),
-      complete: () => observer.complete()
+      ...observer,
+      next: val => (fn(val) ? observer.next(val) : () => {})
     })
   })
 
-module.exports = { map, filter }
+const take = count => observable => {
+  let start = 0
+  return new Observable(observer => {
+    observable.subscribe({
+      ...observer,
+      next: val => (start++ < count ? observer.next(val) : () => {})
+    })
+  })
+}
+
+module.exports = { map, filter, take }
